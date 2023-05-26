@@ -7,7 +7,7 @@ const PORT = 4000
 app.listen(PORT, () => {
   console.log(`API listening on PORT ${PORT} `)
 })
-
+app.use("/api/blogs",require("./router/blogs"))
 app.get('/', (req, res) => {
   res.send('Hey this is my API running 🥳')
 })
