@@ -1,5 +1,6 @@
 const express = require('express')
-
+const database = require("./databse")
+database()
 const app = express()
 const PORT = 4000
 
