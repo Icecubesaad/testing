@@ -1,32 +1,19 @@
-const express = require("express");
-const app = express();
-const database = require("./DB/Database");
-const path = require("path");
+const express = require('express')
 
-// Initialize database connection
-database();
+const app = express()
+const PORT = 4000
 
-// Use express.json() directly
-app.use(express.json({ limit: "500mb" }));
+app.listen(PORT, () => {
+  console.log(`API listening on PORT ${PORT} `)
+})
 
-const port = process.env.PORT || 3000;
-// Error handling middleware
-app.use((err, req, res, next) => {
-    console.error(err); // Log the error for debugging purposes
-  
-    // Set the response status to 500
-    res.status(500).json({ error: 'Internal Server Error' });
-  });
-  
-  // Rest of your code...
-  
-app.get("/", (req, res) => {
-  res.send("Express on Vercel");
-});
-app.use("/api/blogs", require("./Router/Blogs"));
-app.use("/api/auth", require("./Router/Auth"));
+app.get('/', (req, res) => {
+  res.send('Hey this is my API running 🥳')
+})
 
-app.listen(port, () => {
-  console.log(`Server running at ${port}`);
-});
-module.exports = app;
+app.get('/about', (req, res) => {
+  res.send('This is my about route..... ')
+})
+
+// Export the Express API
+module.exports = app
