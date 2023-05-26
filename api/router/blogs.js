@@ -7,3 +7,4 @@ router.get("/get",async(req,res)=>{
     const data = await blogs.find({},except).limit(4)
     res.send(data)
 })
+module.exports = router
